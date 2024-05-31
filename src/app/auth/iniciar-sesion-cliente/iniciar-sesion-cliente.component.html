@@ -1,1 +1,40 @@
-<p>iniciar-sesion-cliente works!</p>
+<div class="container">
+  <div class="imgLogin">
+    <img src="assets/img/casas.png">
+  </div>
+  <div class="FormLogin">
+    <form>
+      <h1>Iniciar Sesión</h1>
+      <div class="formOpc">
+        <label>Correo: </label>
+        <input formControlName="email" type="email" name="email" id="correo">
+      </div>
+      <div class="formOpc">
+        <label>Contraseña: </label>
+        <input formControlName="password" type="password" name="password" id="password">
+      </div>
+      <p>¿Olvidaste la contraseña? <a href="#">Click Aqui!</a></p>
+
+      <div class="btns">
+        <button class="btnCancelar" routerLink="/index">Cancelar</button>
+        <button type="submit"  class="btnAceptar">Iniciar Sesion</button>
+      </div>
+
+
+      <div class="deco">
+        <div class="line"></div>
+        <div class="circle"></div>
+        <div class="line"></div>
+      </div>
+
+      <div class="extra">
+        <button class="btnAceptar">Registrate</button>
+        <div class="demas">
+          <p>Iniciar Sesion como Adminstrador <a href="#" routerLink="/IniciarSesionAgente">Click Aqui</a></p>
+          <p>Iniciar Sesion como Inmobiliaria <a href="#" routerLink="/IniciarSesionInmobiliaria">Click Aqui</a></p>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
