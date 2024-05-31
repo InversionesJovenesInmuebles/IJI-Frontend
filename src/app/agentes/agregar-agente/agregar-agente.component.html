@@ -1,0 +1,39 @@
+<h1>Agregar Agentes</h1>
+
+<div class="container">
+  <h2>Agregue la Información 📙</h2>
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nombres">Nombres</label>
+      <input type="text" maxlength="30" id="nombres" name="nombres" formControlName="nombres">
+    </div>
+    <div class="form-group">
+      <label for="apellidos">Apellidos</label>
+      <input type="text" maxlength="30" id="apellidos" name="apellidos" formControlName="apellidos">
+    </div>
+    <div class="form-group">
+      <label for="dni">DNI</label>
+      <input type="text" id="dni" name="dni" formControlName="dni">
+    </div>
+    <div class="form-group">
+      <label for="correo">Correo Electrónico</label>
+      <input type="email" id="correo" name="correo" formControlName="correo">
+    </div>
+    <div class="form-group">
+      <label for="contrasena">Contraseña</label>
+      <input type="password" id="contrasena" name="contrasena" formControlName="contrasena">
+    </div>
+    <div class="form-group">
+      <label for="contacto">Número de Contacto</label>
+      <input type="text" maxlength="9" id="contacto" name="contacto" (keypress)="onKeyPress($event)" formControlName="contacto">
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="foto">Agregar Foto</label>
+      <input type="file" id="foto" name="foto" formControlName="foto">
+    </div>
+    <button type="submit">Publicar</button>
+  </form>
+</div>
