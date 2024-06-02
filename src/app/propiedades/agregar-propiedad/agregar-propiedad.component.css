@@ -1,0 +1,255 @@
+.especificaciones{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.Descripcion{
+  display: flex;
+  flex-direction: column;
+}
+.EspecificacionesGeneralesComp{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.EspecificacionesPrincipales{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.EspecificacionesDependientes{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.tipoPropiedadBox{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.nomMedidas{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.medidas{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.med{
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+}
+.med p{
+  margin: 0;
+  font-size: 18px;
+}
+.EspecificacionesCasa{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.EspecificacionesDepartamento{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.hidden {
+  display: none;
+}
+.parte{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+label{
+  font-size: 16pt;
+}
+
+input, textarea, select{
+  background-color: #E0E0E0;
+  color: #012169;
+  border-bottom: solid 2px #012169;
+  border-top: solid 0px #012169;
+  border-left: solid 0px #012169;
+  border-right: solid 0px #012169;
+  font-size: 14pt;
+}
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #E0E0E0;
+  border-bottom: solid 2px #012169;
+  border-top: solid 0px #012169;
+  border-left: solid 0px #012169;
+  border-right: solid 0px #012169;
+  width: 26px;
+  height: 26px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin: 0px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #012169;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 7px;
+  width: 10px;
+  height: 18px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.EspecificacionesPrincipales input[type=number]{
+  width: 100px;
+}
+.EspecificacionesCasa input[type=number]{
+  width: 179px;
+}
+.EspecificacionesDepartamento input[type=number]{
+  width: 145px;
+}
+
+/*DIRECCION Y COSTO*/
+.direcosto{
+  display: flex;
+  flex-direction: row;
+  gap: 25px
+}
+.direccion{
+  width: 67%;
+}
+.costos{
+  width: 30%;
+}
+.direccionForm{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.direccionpt1{
+  display: flex;
+  flex-direction: row;
+  gap: 31px;
+}
+.formCamp{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.direccionpt2{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+.formCampTipo{
+  display: flex;
+  flex-direction: column;
+  width: 18%;
+}
+.formCampNombre{
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+.formCampNum{
+  display: flex;
+  flex-direction: column;
+  width: 11%;
+}
+.direccionpt3{
+  display: flex;
+  flex-direction: row;
+  gap: 78px;
+}
+.formCampReferencia{
+  display: flex;
+  flex-direction: column;
+  width: 71%;
+}
+.formCampCoordenadas{
+  display: flex;
+  flex-direction: column;
+  width: 14%;
+}
+.formCampContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.formCampCosto{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/*PROBANDO IMAGENES*/
+
+.upload-container {
+  display: flex;
+  gap: 20px;
+}
+
+.upload-box {
+  width: 250px;
+  height: 250px;
+  border: 2px solid #000000;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.upload-box p {
+  margin-top: 10px;
+  color: #000000;
+}
+
+.images-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.image-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.remove-image {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 0, 0, 0.7);
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 50%;
+}
+
+.remove-image:hover {
+  background: rgba(255, 0, 0, 1);
+}
+

@@ -1,1 +1,230 @@
-<p>agregar-propiedad works!</p>
+<h1>Agregar Propiedad</h1>
+<form action="">
+  <h2>Especificaciones</h2>
+  <div class="especificaciones">
+    <div class="Descripcion">
+
+      <label for="descripcion">Descripcion:*</label>
+      <textarea name="descripcion" id="descripcion" cols="45" rows="10  "></textarea>
+
+    </div>
+
+    <div class="EspecificacionesGeneralesComp">
+      <div class="EspecificacionesPrincipales">
+
+        <div class="nomMedidas">
+          <label for="AreaTerreno">Àrea de terreno *:</label>
+          <label for="banos">Cant. de Baños:*</label>
+          <label for="dormitorios">Cant. de Dormitorios:*</label>
+          <label for="cochera">Cochera*:</label>
+          <label for="cantCocheras">Cant. de Cochera:</label>
+        </div>
+        <div class="medidas">
+          <div class="med">
+            <input type="number" name="areaTerreno" id="AreaTerreno" placeholder="999">
+            <p>m<sup>2</sup></p>
+          </div>
+          <div class="med">
+            <input type="number" name="banos" id="banos" placeholder="2">
+            <img src="assets/img/icons/bano.png" alt="" height="26">
+          </div>
+          <div class="med">
+            <input type="number" name="dormitorios" id="dormitorios" placeholder="2">
+            <img src="assets/img/icons/habitacion.png" alt="" height="26">
+          </div>
+          <div class="med">
+            <input type="checkbox" name="cochera" id="cochera">
+          </div>
+          <div class="med">
+            <input type="number" name="cantCocheras" id="cantCocheras" placeholder="1">
+            <img src="assets/img/icons/Cochera.png" alt="" height="26">
+          </div>
+        </div>
+      </div>
+
+      <label for="otrasComodidades">Otras comodidades</label>
+      <textarea name="otrasComodidades" id="otrasComodidades" cols="34" rows="2"></textarea>
+    </div>
+
+    <div class="EspecificacionesDependientes">
+      <div class="tipoPropiedadBox">
+        <label for="tipoPropiedad">Tipo de Propiedad*:</label>
+        <select name="tipoPropiedad" id="tipoPropiedad" (change)="onTipoPropiedadChange($event)">
+          <option value="casa">Casa</option>
+          <option value="departamento">Departamento</option>
+        </select>
+      </div>
+
+      <div class="EspecificacionesCasa" [ngClass]="{'hidden': selectedTipoPropiedad !== 'casa'}">
+
+        <div class="nomMedidas" >
+          <label for="cantPisos">Cant. Pisos *:</label>
+          <label for="jardin">Jardín:*</label>
+          <label for="areaJardin">Area Jardín:</label>
+          <label for="atico">Atico:</label>
+          <label for="sotano">Sotano:</label>
+        </div>
+        <div class="medidas">
+          <div class="med">
+            <input type="number" name="cantPisos" id="cantPisos">
+            <img src="assets/img/icons/pisos.png" alt="" height="26">
+
+          </div>
+          <div class="med">
+            <input type="checkbox" name="jardin" id="jardin">
+          </div>
+          <div class="med">
+            <input type="number" name="areaJardin" id="areaJardin">
+            <p>m<sup>2</sup></p>
+          </div>
+          <div class="med">
+            <input type="checkbox" name="atico" id="atico">
+          </div>
+          <div class="med">
+            <input type="checkbox" name="sotano" id="sotano">
+          </div>
+        </div>
+
+      </div>
+      <div class="EspecificacionesDepartamento" [ngClass]="{'hidden': selectedTipoPropiedad !== 'departamento'}">
+        <div class="parte">
+          <div class="nomMedidas">
+            <label for="piso">Piso*:</label>
+            <label for="int">Interior:*</label>
+            <label for="ascensor">Ascensor:</label>
+            <label for="areasComunes">Áreas Comunes:</label>
+          </div>
+          <div class="medidas">
+            <div class="med">
+              <input type="number" name="Piso" id="piso">
+              <img src="assets/img/icons/pisos.png" alt="" height="26">
+
+            </div>
+            <div class="med">
+              <input type="number" name="int" id="int">
+              <img src="assets/img/icons/hastag.png" alt="" height="26">
+
+            </div>
+            <div class="med">
+              <input type="checkbox" name="ascensor" id="ascensor">
+            </div>
+            <div class="med">
+              <input type="checkbox" name="areasComunes" id="areasComunes">
+            </div>
+          </div>
+        </div>
+
+        <label for="areasComunesEspecificas">Areas comunes</label>
+        <textarea name="areasComunesEspecificas" id="areasComunesEspecificas" cols="31" rows="2"></textarea>
+
+      </div>
+    </div>
+  </div>
+  <div class="direcosto">
+    <div class="direccion">
+      <h2>Dirección</h2>
+      <div class="direccionForm">
+        <div class="direccionpt1">
+          <div class="formCamp">
+            <label for="pais">Pais:*</label>
+            <select name="pais" id="pais" formControlName="pais">
+              <option value="peru">Perú</option>
+            </select>
+          </div>
+          <div class="formCamp">
+            <label for="region">Region:*</label>
+            <select name="region" id="region" formControlName="region">
+              <option value="region">Region</option>
+            </select>
+          </div>
+          <div class="formCamp">
+            <label for="provincia">Provincia:*</label>
+            <select name="provincia" id="provincia" formControlName="provincia">
+              <option value="provincia">Provincia</option>
+            </select>
+          </div>
+          <div class="formCamp">
+            <label for="distrito">Distrito:*</label>
+            <select name="distrito" id="distrito" formControlName="distrito">
+              <option value="distrito">Distrito</option>
+            </select>
+          </div>
+        </div>
+        <div class="direccionpt2">
+          <div class="formCampTipo">
+            <label for="tipo">Tipo:*</label>
+            <select name="tipo" id="tipo" formControlName="tipo">
+              <option value="Calle">Calle</option>
+              <option value="Jiron">Jiron</option>
+              <option value="Avenida">Avenida</option>
+              <option value="Prolongacion">Prolongacion</option>
+            </select>
+          </div>
+          <div class="formCampNombre">
+            <label for="nombre">Nombre:*</label>
+            <input type="text" name="nombre" id="nombre" formControlName="nombre">
+          </div>
+          <div class="formCampNum">
+            <label for="manzana">Manzana</label>
+            <input type="text" name="manzana" id="manzana" placeholder="numero o letra" formControlName="manzana">
+          </div>
+          <div class="formCampNum">
+            <label for="lote">Lote</label>
+            <input type="number" name="lote" id="lote" placeholder="99" formControlName="lote">
+          </div>
+          <div class="formCampNum">
+            <label for="interior">Interior</label>
+            <input type="number" name="interior" id="interior" placeholder="101" formControlName="interior">
+          </div>
+        </div>
+        <div class="direccionpt3">
+          <div class="formCampReferencia">
+            <label for="referencia">Referencia:*</label>
+            <input type="text" name="referencia" id="referencia" formControlName="referencia">
+          </div>
+          <div class="formCampCoordenadas">
+            <label for="latitud">Latitud</label>
+            <input type="number" name="latitud" id="latitud" placeholder="1.1111" formControlName="latitud">
+          </div>
+          <div class="formCampCoordenadas">
+            <label for="longitud">Longitud</label>
+            <input type="number" name="longitud" id="longitud" placeholder="1.1111" formControlName="longitud">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="costos">
+      <h2>Costos</h2>
+      <div class="formCampContainer">
+        <div class="formCampCosto">
+          <label for="costoTotal">Costo Total:*</label>
+          <input type="number" name="costoTotal" id="costoTotal" placeholder="999 999" formControlName="costoTotal">
+        </div>
+        <div class="formCampCosto">
+          <label for="costoInicial">Costo Inicial:*</label>
+          <input type="number" name="costoInicial" id="costoInicial" placeholder="99 999" formControlName="costoInicial">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="imagenes">
+    <h2>Imagenes</h2>
+    <div class="galeria">
+      <div class="upload-container">
+        <div class="upload-box" (click)="fileInput.click()">
+          <input #fileInput type="file" (change)="onFileSelected($event)" hidden accept="image/*">
+          <img src="assets/img/icons/agregarImagen.png">
+          <p>Agregar Imagen</p>
+        </div>
+        <div class="images-preview">
+          <div *ngFor="let image of images; let i = index" class="image-container">
+            <img [src]="image" alt="Imagen subida">
+            <button type="button" class="remove-image" (click)="removeImage(i)">X</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="propertyForm.invalid">Enviar</button>
+</form>

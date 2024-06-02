@@ -1,3 +1,23 @@
+.titulo{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.btnAgregar{
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 10px;
+  font-size: 15pt;
+  background-color: #012169;
+  color: #ffffff;
+  border: solid 1px #012169;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+.btnAgregar:hover{
+  background-color: #ffffff;
+  color: #012169;
+}
 .container{
   display: flex;
   flex-wrap: wrap;
