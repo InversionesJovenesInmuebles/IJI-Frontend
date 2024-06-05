@@ -1,48 +1,49 @@
 import { Component } from '@angular/core';
-import {FormGroup, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
-  selector: 'app-agregar-agente',
+  selector: 'app-gestionar-agente',
   standalone: true,
-  imports: [
-    ReactiveFormsModule
-  ],
+  imports: [],
   templateUrl: './agregar-agente.component.html',
-  styleUrl: './agregar-agente.component.css'
+  styleUrls: ['./agregar-agente.component.css']
 })
 export class AgregarAgenteComponent {
+  selectedImage: string | ArrayBuffer | null = null;
 
-  formulario: FormGroup;
-
-  constructor(private fb: FormBuilder) {
-    this.formulario = this.fb.group({
-      nombres: ['', [Validators.required, Validators.maxLength(30)]],
-      apellidos: ['', [Validators.required, Validators.maxLength(30)]],
-      dni: ['', [Validators.required, Validators.maxLength(8), Validators.pattern('^[0-9]{8}$')]],
-      correo: ['', [Validators.required, Validators.email]],
-      contrasena: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
-      contacto: ['', [Validators.required, Validators.maxLength(9), Validators.pattern('^[0-9]{9}$')]],
-      foto: ['']
-    });
+  onAgregar() {
+    // logica backend?
   }
 
-  onSubmit() {
-    if (this.formulario.valid) {
-      // Aquí puedes enviar los datos al servidor
-      console.log(this.formulario.value);
-    } else {
-      // Si el formulario no es válido, puedes mostrar un mensaje o realizar otra acción
-      alert('Por favor, complete el formulario correctamente.');
+  onCancel() {
+    this.selectedImage = null;
+  }
+
+  triggerFileInput() {
+    console.log('triggerFileInput called'); // Debug
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    fileInput.click();
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      if (!file.type.startsWith('image/')) {
+        console.error('Selected file is not an image');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        if (e.target?.result) {
+          this.selectedImage = e.target.result;
+        }
+      };
+      reader.readAsDataURL(file);
     }
   }
 
-  onKeyPress(event: any) {
-    // Obtener el código de la tecla presionada
-    const charCode = (event.which) ? event.which : event.keyCode;
-    // Permitir solo números (del 0 al 9) y teclas de control como borrar y retroceso
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      event.preventDefault(); // Cancelar el evento si no es un número
-    }
+  onAdd() {
+    console.log('Agregar');
+    // Lógica para agregar la foto
   }
-
 }
