@@ -1,59 +1,71 @@
-.card {
-  width: 300px;
-  height: 500px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.property-image {
-  width: 100%;
-  max-height: 225px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.precio {
-  font-weight: bold;
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-.detalles {
+.propiedadCard{
+  height: auto;
+  width: 350px;
   display: flex;
-  gap: 15px;
-  margin: 5px auto;
-  align-content: center;
+  flex-direction: column;
+  object-fit: contain;
+  padding: 10px;
+  gap: 9px;
+  border-radius: 5px;
+  border: solid 1px #cdcdcd;
+}
+.propiedadCard p{
+  margin: 0px;
+}
+
+.tipoPropiedad{
+  padding: 0 5px;
+  background-color: #FD924E;
+  color: #ffffff;
+  font-size: 18pt;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 5px;
+}
+.precios{
+  display: flex;
+  flex-direction: row;
+  font-size: 18pt;
+  justify-content: space-around;
+}
+
+.especificaciones{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 0 10px;
   align-items: center;
   justify-content: center;
 }
-
-.detalleItem {
-  margin-bottom: 10px;
-  font-size: 20px;
+.caracteristica{
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+  font-size: 18pt;
+  object-fit: contain;
+}
+.direccion{
+  padding: 0 10px;
+  font-size: 15pt;
 }
 
-.detalleItem img {
-  width: 25px;
-  vertical-align: middle;
+.ver-mas {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
-.direccion {
-  margin-top: 20px;
-  font-style: italic;
-}
-
-.btn {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
+.ver-mas button {
+  padding: 8px 15px;
+  background-color: #012169;
+  color: white;
+  border: none;
   border-radius: 5px;
-  text-decoration: none;
+  font-size: 16pt;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.btn:hover {
-  background-color: #0056b3;
+.ver-mas button:hover {
+  background-color: #7387b1;
 }

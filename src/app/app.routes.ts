@@ -11,6 +11,7 @@ import {GestionarPropiedadesComponent} from "./propiedades/gestionar-propiedades
 import {AgregarPropiedadComponent} from "./propiedades/agregar-propiedad/agregar-propiedad.component";
 import {ModificarPropiedadComponent} from "./propiedades/modificar-propiedad/modificar-propiedad.component";
 import {PropiedadesComponent} from "./pages/propiedades/propiedades.component";
+import { VerPropiedadComponent } from './pages/ver-propiedad/ver-propiedad.component';
 
 export const routes: Routes = [
 
@@ -78,5 +79,10 @@ export const routes: Routes = [
     path: '',
     redirectTo: '/index',
     pathMatch: 'full'
-  }
+  },
+  {
+    path:'verPropiedad',
+    title:'Ver Propiedad',
+    component:VerPropiedadComponent,
+  },
 ];
