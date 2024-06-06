@@ -252,4 +252,25 @@ input[type="checkbox"]:checked::after {
 .remove-image:hover {
   background: rgba(255, 0, 0, 1);
 }
-
+.botones{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  padding: 24px 0;
+}
+.CancelarBTN{
+  padding: 5px 10px;
+  background: #000;
+  font-size: 15pt;
+  color: #ffffff;
+  border-radius: 5px;
+  border: solid 1px #000;
+}
+.EnviarBTN{
+  padding: 5px 10px;
+  background: #012169;
+  font-size: 15pt;
+  color: #ffffff;
+  border-radius: 5px;
+  border: solid 1px #012169;
+}

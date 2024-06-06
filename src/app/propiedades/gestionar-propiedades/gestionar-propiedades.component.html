@@ -1,6 +1,6 @@
 <div class="titulo">
   <h1>Gestionar Propiedades</h1>
-  <button class="btnAgregar" routerLink="/agregarPropiedad">Agregar Propiedad</button>
+  <button class="btnAgregar" (click)="openModal()">Agregar Propiedad</button>
 </div>
 <div class="container">
   <div class="propiedadCard">
@@ -43,3 +43,23 @@
     </div>
   </div>
 </div>
+
+<!--Modal de Agregar Propiedad-->
+<div class="modal" [ngClass]="{'show': isModalOpen}">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Agregar Propiedad</h2>
+    <p>Seleccione el tipo de propiedad que desea agregar:</p>
+    <div class="button-container">
+      <button (click)="addHouse()">
+        <img src="assets/img/icons/casa.png" alt="Casa">
+        <span>Agregar Casa</span>
+      </button>
+      <button (click)="addApartment()">
+        <img src="assets/img/icons/departamento.png" alt="Departamento">
+        <span>Agregar Departamento</span>
+      </button>
+    </div>
+  </div>
+</div>
+

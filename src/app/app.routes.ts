@@ -8,10 +8,11 @@ import {ModificarAgenteComponent} from "./agentes/modificar-agente/modificar-age
 import {GestionarAgenteComponent} from "./agentes/gestionar-agente/gestionar-agente.component";
 import {PerfilAgenteComponent} from "./agentes/perfil-agente/perfil-agente.component";
 import {GestionarPropiedadesComponent} from "./propiedades/gestionar-propiedades/gestionar-propiedades.component";
-import {AgregarPropiedadComponent} from "./propiedades/agregar-propiedad/agregar-propiedad.component";
 import {ModificarPropiedadComponent} from "./propiedades/modificar-propiedad/modificar-propiedad.component";
 import {PropiedadesComponent} from "./pages/propiedades/propiedades.component";
 import { VerPropiedadComponent } from './pages/ver-propiedad/ver-propiedad.component';
+import {AgregarCasaComponent} from "./propiedades/agregar-casa/agregar-casa.component";
+import {AgregarDepartamentoComponent} from "./propiedades/agregar-departamento/agregar-departamento.component";
 
 export const routes: Routes = [
 
@@ -61,9 +62,14 @@ export const routes: Routes = [
     component:GestionarPropiedadesComponent,
   },
   {
-    path:'agregarPropiedad',
-    title:'Agregar Propiedad',
-    component: AgregarPropiedadComponent,
+    path:'agregarCasa',
+    title:'Agregar Casa',
+    component: AgregarCasaComponent,
+  },
+  {
+    path:'agregarDepartamento',
+    title:'Agregar Departamento',
+    component: AgregarDepartamentoComponent,
   },
   {
     path:'modificarPropiedad',

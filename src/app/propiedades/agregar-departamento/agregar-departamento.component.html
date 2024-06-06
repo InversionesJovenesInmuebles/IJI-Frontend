@@ -49,44 +49,11 @@
     <div class="EspecificacionesDependientes">
       <div class="tipoPropiedadBox">
         <label for="tipoPropiedad">Tipo de Propiedad*:</label>
-        <select name="tipoPropiedad" id="tipoPropiedad" (change)="onTipoPropiedadChange($event)">
-          <option value="casa">Casa</option>
-          <option value="departamento">Departamento</option>
+        <select name="tipoPropiedad" id="tipoPropiedad" disabled>
+          <option value="departamento" selected>Departamento</option>
         </select>
       </div>
-
-      <div class="EspecificacionesCasa" [ngClass]="{'hidden': selectedTipoPropiedad !== 'casa'}">
-
-        <div class="nomMedidas" >
-          <label for="cantPisos">Cant. Pisos *:</label>
-          <label for="jardin">Jardín:*</label>
-          <label for="areaJardin">Area Jardín:</label>
-          <label for="atico">Atico:</label>
-          <label for="sotano">Sotano:</label>
-        </div>
-        <div class="medidas">
-          <div class="med">
-            <input type="number" name="cantPisos" id="cantPisos">
-            <img src="assets/img/icons/pisos.png" alt="" height="26">
-
-          </div>
-          <div class="med">
-            <input type="checkbox" name="jardin" id="jardin">
-          </div>
-          <div class="med">
-            <input type="number" name="areaJardin" id="areaJardin">
-            <p>m<sup>2</sup></p>
-          </div>
-          <div class="med">
-            <input type="checkbox" name="atico" id="atico">
-          </div>
-          <div class="med">
-            <input type="checkbox" name="sotano" id="sotano">
-          </div>
-        </div>
-
-      </div>
-      <div class="EspecificacionesDepartamento" [ngClass]="{'hidden': selectedTipoPropiedad !== 'departamento'}">
+      <div class="EspecificacionesDepartamento" >
         <div class="parte">
           <div class="nomMedidas">
             <label for="piso">Piso*:</label>
@@ -218,5 +185,8 @@
       </div>
     </div>
   </div>
-  <button type="submit" [disabled]="propertyForm.invalid">Enviar</button>
+  <div class="botones">
+    <button type="button" class="CancelarBTN">Cancelar</button>
+    <button type="submit" class="EnviarBTN">Enviar</button>
+  </div>
 </form>

@@ -1,26 +1,19 @@
-import {Component} from '@angular/core';
-import {NgClass, NgForOf} from "@angular/common";
+import { Component } from '@angular/core';
+import {NgForOf} from "@angular/common";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-agregar-propiedad',
+  selector: 'app-agregar-casa',
   standalone: true,
   imports: [
-    NgClass,
     NgForOf
   ],
-  templateUrl: './agregar-propiedad.component.html',
-  styleUrl: './agregar-propiedad.component.css'
+  templateUrl: './agregar-casa.component.html',
+  styleUrl: './agregar-casa.component.css'
 })
-export class AgregarPropiedadComponent{
+export class AgregarCasaComponent {
   propertyForm: FormGroup;
-  regions: string[] = [];
-  provinces: string[] = [];
-  districts: string[] = [];
-  data: any[] = [];
   images: string[] = [];
-  selectedTipoPropiedad: string = 'casa';  // Valor inicial preseleccionado
-
   constructor(private fb: FormBuilder) {
     this.propertyForm = this.fb.group({
       descripcion: ['', Validators.required],
@@ -58,12 +51,6 @@ export class AgregarPropiedadComponent{
       images: [this.images, Validators.required]
     });
   }
-
-  onTipoPropiedadChange(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement;
-    this.selectedTipoPropiedad = selectElement.value;
-  }
-
   onFileSelected(event: any) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
@@ -83,12 +70,4 @@ export class AgregarPropiedadComponent{
     this.images.splice(index, 1);
     this.propertyForm.controls['images'].setValue(this.images);
   }
-
-  onSubmit() {
-    if (this.propertyForm.valid) {
-      // Maneja el envío del formulario
-      console.log('Formulario enviado', this.propertyForm.value);
-    }
-  }
-
 }
