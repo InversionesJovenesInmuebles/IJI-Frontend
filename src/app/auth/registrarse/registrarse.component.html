@@ -1,1 +1,47 @@
-<p>registrarse works!</p>
+<div class="container">
+  <div class="FormLogin">
+    <form>
+      <h1>Registrarse</h1>
+      <div class="regis">
+        <section>
+          <div class="formOpc">
+            <label>Correo: </label>
+            <input formControlName="email" type="email" name="email" id="correo">
+          </div>
+          <div class="formOpc">
+            <label>Nombre: </label>
+            <input formControlName="email" type="text" name="nombre" id="nombre">
+          </div>
+          <div class="formOpc">
+            <label>Apellido: </label>
+            <input formControlName="email" type="text" name="apellido" id="apellido">
+          </div>
+        </section>
+        <section>
+          <div class="formOpc">
+            <label>Contraseña: </label>
+            <input formControlName="password" type="password" name="password" id="password">
+          </div>
+          <div class="formOpc">
+            <label>Telefono: </label>
+            <input formControlName="email" type="email" name="text" id="telefono">
+          </div>
+          <div class="formOpc">
+            <label>DNI: </label>
+            <input formControlName="email" type="text" name="dni" id="dni">
+          </div>
+        </section>
+      </div>
+
+      <div class="btns">
+        <button class="btnCancelar" routerLink="/iniciarSesionCliente">Cancelar</button>
+        <button type="submit"  class="btnAceptar">Registrarse</button>
+      </div>
+
+
+    </form>
+  </div>
+  <div class="imgLogin">
+    <img src="assets/img/CasaRegistrarse.png">
+  </div>
+</div>
