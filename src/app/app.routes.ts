@@ -13,6 +13,7 @@ import {PropiedadesComponent} from "./pages/propiedades/propiedades.component";
 import { VerPropiedadComponent } from './pages/ver-propiedad/ver-propiedad.component';
 import {AgregarCasaComponent} from "./propiedades/agregar-casa/agregar-casa.component";
 import {AgregarDepartamentoComponent} from "./propiedades/agregar-departamento/agregar-departamento.component";
+import {RegistrarseComponent} from "./auth/registrarse/registrarse.component";
 
 export const routes: Routes = [
 
@@ -25,6 +26,11 @@ export const routes: Routes = [
     path:'iniciarSesionCliente',
     title:'Iniciar Sesión Cliente',
     component: IniciarSesionClienteComponent,
+  },
+  {
+    path:'registrarse',
+    title:'Registrarse',
+    component: RegistrarseComponent,
   },
   {
     path:'iniciarSesionAgente',
