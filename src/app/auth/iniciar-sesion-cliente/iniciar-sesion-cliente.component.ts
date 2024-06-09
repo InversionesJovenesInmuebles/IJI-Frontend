@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import {LoginRequest} from "../../interfaces/login-request";
@@ -12,7 +12,8 @@ import {HttpClientModule} from "@angular/common/http";
   standalone: true,
   imports: [
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterLink
   ],
   templateUrl: './iniciar-sesion-cliente.component.html',
   styleUrls: ['./iniciar-sesion-cliente.component.css']
