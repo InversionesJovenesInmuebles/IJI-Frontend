@@ -1,44 +1,41 @@
 <div class="container">
   <div class="FormLogin">
-    <form>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <h1>Registrarse</h1>
       <div class="regis">
         <section>
           <div class="formOpc">
             <label>Correo: </label>
-            <input formControlName="email" type="email" name="email" id="correo">
+            <input formControlName="correo" type="email" id="correo">
           </div>
           <div class="formOpc">
             <label>Nombre: </label>
-            <input formControlName="email" type="text" name="nombre" id="nombre">
+            <input formControlName="nombre" type="text" id="nombre">
           </div>
           <div class="formOpc">
             <label>Apellido: </label>
-            <input formControlName="email" type="text" name="apellido" id="apellido">
+            <input formControlName="apellido" type="text" id="apellido">
           </div>
         </section>
         <section>
           <div class="formOpc">
             <label>Contraseña: </label>
-            <input formControlName="password" type="password" name="password" id="password">
+            <input formControlName="contrasena" type="password" id="contrasena">
           </div>
           <div class="formOpc">
             <label>Telefono: </label>
-            <input formControlName="email" type="email" name="text" id="telefono">
+            <input formControlName="telefono" type="text" id="telefono">
           </div>
           <div class="formOpc">
             <label>DNI: </label>
-            <input formControlName="email" type="text" name="dni" id="dni">
+            <input formControlName="dni" type="text" id="dni">
           </div>
         </section>
       </div>
-
       <div class="btns">
         <button class="btnCancelar" routerLink="/iniciarSesionCliente">Cancelar</button>
-        <button type="submit"  class="btnAceptar">Registrarse</button>
+        <button type="submit" class="btnAceptar" [disabled]="registerForm.invalid">Registrarse</button>
       </div>
-
-
     </form>
   </div>
   <div class="imgLogin">
