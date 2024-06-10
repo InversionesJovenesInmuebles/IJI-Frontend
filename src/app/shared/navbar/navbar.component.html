@@ -6,46 +6,68 @@
   </div>
 
   <div class="navbar-options">
-    <!-- Usuario Gest \-->
-    <a class="navLink" routerLink="/propiedades">
-      <img class="navIcon" src="assets/img/icons/propiedades.png" alt="Contactanos" >
-      <p class="navOpc"> Propiedades</p>
-    </a>
-    <a class="navLink" >
-      <img class="navIcon" src="assets/img/icons/documento.png" alt="Articulos">
-      <p class="navOpc"> Articulos</p>
-    </a>
-    <a class="navLink">
-      <img class="navIcon" src="assets/img/icons/herramientas.png" alt="Herramientas">
-      <p class="navOpc"> Herramientas</p>
-    </a>
-
-    <!-- Usuario Agente \-->
-    <a class="navLink" routerLink="/gestionarPropiedades">
-      <img class="navIcon" src="assets/img/icons/GestionarPropiedades.png" alt="Contactanos" >
-      <p class="navOpc"> Gestionar Propiedades</p>
-    </a>
-
-    <!-- Usuario Inmobiliaria \-->
-    <a class="navLink" routerLink="/gestionarAgente">
-      <img class="navIcon" src="assets/img/icons/Agregar%20Agente.png" alt="Contactanos" >
-      <p class="navOpc"> Gestionar Agente</p>
-    </a>
-    <a class="navLink">
-      <img class="navIcon" src="assets/img/icons/documento.png" alt="Articulos">
-      <p class="navOpc"> Mis Articulos</p>
-    </a>
-
-    @if (UserLoginOn) {
-      <a class="navLink" >
-        <img class="navIcon" src="assets/img/icons/usuario.png" alt="Mi Perfil">
-        <p class="navOpc"> Mi Perfil</p>
+    <ng-container *ngIf="role === 'Invitado'">
+      <a class="navLink" routerLink="/propiedades">
+        <img class="navIcon" src="assets/img/icons/propiedades.png" alt="Contactanos">
+        <p class="navOpc"> Propiedades</p>
       </a>
-    } @else{
-      <a class="navLink" routerLink="/iniciarSesionCliente">
+      <a class="navLink">
+        <img class="navIcon" src="assets/img/icons/documento.png" alt="Articulos">
+        <p class="navOpc"> Articulos</p>
+      </a>
+      <a class="navLink">
+        <img class="navIcon" src="assets/img/icons/herramientas.png" alt="Herramientas">
+        <p class="navOpc"> Herramientas</p>
+      </a>
+      <a class="navLink" routerLink="/iniciarSesion">
         <img class="navIcon" src="assets/img/icons/IniciarSesion.png" alt="Iniciar Sesion">
         <p class="navOpc"> Iniciar Sesion</p>
       </a>
-    }
+    </ng-container>
+
+    <ng-container *ngIf="role === 'Cliente'">
+      <a class="navLink" routerLink="/propiedades">
+        <img class="navIcon" src="assets/img/icons/propiedades.png" alt="Contactanos">
+        <p class="navOpc"> Propiedades</p>
+      </a>
+      <a class="navLink">
+        <img class="navIcon" src="assets/img/icons/documento.png" alt="Articulos">
+        <p class="navOpc"> Articulos</p>
+      </a>
+      <a class="navLink">
+        <img class="navIcon" src="assets/img/icons/herramientas.png" alt="Herramientas">
+        <p class="navOpc"> Herramientas</p>
+      </a>
+      <a class="navLink" (click)="logout()">
+        <img class="navIcon" src="assets/img/icons/usuario.png" alt="Cerrar Sesion">
+        <p class="navOpc"> Cerrar Sesion</p>
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="role === 'Agente'">
+      <a class="navLink" routerLink="/gestionarPropiedades">
+        <img class="navIcon" src="assets/img/icons/GestionarPropiedades.png" alt="Contactanos">
+        <p class="navOpc"> Gestionar Propiedades</p>
+      </a>
+      <a class="navLink" (click)="logout()">
+        <img class="navIcon" src="assets/img/icons/usuario.png" alt="Cerrar Sesion">
+        <p class="navOpc"> Cerrar Sesion</p>
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="role === 'Inmobiliaria'">
+      <a class="navLink" routerLink="/gestionarAgente">
+        <img class="navIcon" src="assets/img/icons/Agregar%20Agente.png" alt="Contactanos">
+        <p class="navOpc"> Gestionar Agentes</p>
+      </a>
+      <a class="navLink">
+        <img class="navIcon" src="assets/img/icons/documento.png" alt="Articulos">
+        <p class="navOpc"> Mis Articulos</p>
+      </a>
+      <a class="navLink" (click)="logout()">
+        <img class="navIcon" src="assets/img/icons/usuario.png" alt="Cerrar Sesion">
+        <p class="navOpc"> Cerrar Sesion</p>
+      </a>
+    </ng-container>
   </div>
 </nav>
