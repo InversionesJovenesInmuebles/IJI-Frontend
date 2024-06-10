@@ -3,21 +3,26 @@
     <img src="assets/img/casas.png">
   </div>
   <div class="FormLogin">
-    <form>
+    <form (ngSubmit)="onSubmit()" class="formulario">
       <h1>Iniciar Sesión</h1>
-      <div class="formOpc">
-        <label>Correo: </label>
-        <input type="email" name="correo" [(ngModel)]="loginRequest.correo" required>
+      <div class="campos">
+        <div class="formOpc">
+          <label>Correo: </label>
+          <input type="email" name="correo" [(ngModel)]="loginRequest.correo" required>
+        </div>
+        <div class="formOpc">
+          <label>Contraseña: </label>
+          <input type="password" name="contrasena" [(ngModel)]="loginRequest.contrasena" required>
+        </div>
       </div>
-      <div class="formOpc">
-        <label>Contraseña: </label>
-        <input type="password" name="contrasena" [(ngModel)]="loginRequest.contrasena" required>
-      </div>
+
       <p>¿Olvidaste la contraseña? <a href="#">Click Aqui!</a></p>
+
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 
       <div class="btns">
         <button class="btnCancelar" routerLink="/index">Cancelar</button>
-        <button type="submit" (click)="onSubmit()" class="btnAceptar" routerLink="/propiedades">Iniciar Sesion</button>
+        <button type="submit" class="btnAceptar">Iniciar Sesion</button>
       </div>
 
       <div class="deco">

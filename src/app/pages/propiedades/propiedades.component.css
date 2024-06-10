@@ -4,20 +4,25 @@
   display: flex;
   flex-direction: column;
   object-fit: contain;
-  padding: 10px;
   gap: 9px;
   border-radius: 5px;
-  border: solid 1px #cdcdcd;
+  border: solid 1px #012169;
 }
 .propiedadCard p{
   margin: 0px;
 }
-
+.pt1{
+  display: flex;
+  flex-direction: column;
+  object-fit: contain;
+  padding: 10px;
+  gap: 9px;
+}
 .tipoPropiedad{
   padding: 0 5px;
   background-color: #FD924E;
   color: #ffffff;
-  font-size: 18pt;
+  font-size: 15pt;
   width: fit-content;
   height: fit-content;
   border-radius: 5px;
@@ -25,7 +30,7 @@
 .precios{
   display: flex;
   flex-direction: row;
-  font-size: 18pt;
+  font-size: 15pt;
   justify-content: space-around;
 }
 
@@ -40,13 +45,13 @@
 .caracteristica{
   display: flex;
   flex-direction: row;
-  height: 35px;
-  font-size: 18pt;
+  height: 30px;
+  font-size: 15pt;
   object-fit: contain;
 }
 .direccion{
   padding: 0 10px;
-  font-size: 15pt;
+  font-size: 13pt;
 }
 
 .ver-mas {

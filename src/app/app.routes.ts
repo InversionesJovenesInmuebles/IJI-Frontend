@@ -14,6 +14,7 @@ import { VerPropiedadComponent } from './pages/ver-propiedad/ver-propiedad.compo
 import {AgregarCasaComponent} from "./propiedades/agregar-casa/agregar-casa.component";
 import {AgregarDepartamentoComponent} from "./propiedades/agregar-departamento/agregar-departamento.component";
 import {RegistrarseComponent} from "./auth/registrarse/registrarse.component";
+import {IniciarSesionComponent} from "./auth/iniciar-sesion/iniciar-sesion.component";
 
 export const routes: Routes = [
 
@@ -21,6 +22,11 @@ export const routes: Routes = [
     path: 'index',
     title: 'Index',
     component: IndexComponent,
+  },
+  {
+    path:'iniciarSesion',
+    title:'Iniciar Sesión',
+    component: IniciarSesionComponent,
   },
   {
     path:'iniciarSesionCliente',
