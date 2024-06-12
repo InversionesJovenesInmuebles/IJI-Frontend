@@ -1,23 +1,43 @@
-  <div class="container">
-    <div class="header">
-      <h1>Gestionar Agentes Inmobiliarios</h1>
-      <a href="/agregarAgente" routerLink="/agregaragente" class="add-agent-button">
-        <span>Agregar Agente 👨🏻‍💼</span>
-        <i class="fas fa-user-plus"></i>
-      </a>
-    </div>
-    <div class="agents-grid">
-      <div class="agent-card">
-        <section>
-          <img src="assets/agentes_fotos/pedro.png" alt="Pedro Jose Cuellar" class="agent-photo">
-          <h2>Pedro Jose Cuellar</h2>
-          <p><i class="fas fa-envelope"></i> ✉️example&#64;example.com</p>
-          <p><i class="fas fa-phone"></i> 📞 999 999 999</p>
-        </section>
-        <div class="opciones">
-          <button class="btnModificar" >Modificar</button>
-          <button class="btnEliminar" >Eliminar</button>
+<div class="container">
+  <div class="header">
+    <h1>Gestionar Agentes Inmobiliarios</h1>
+    <a href="/agregarAgente" routerLink="/agregarAgente" class="add-agent-button">
+      <span>Agregar Agente 👨🏻‍💼</span>
+      <i class="fas fa-user-plus"></i>
+    </a>
+  </div>
+  <div class="agents-grid">
+    <div class="agent-card">
+      <section>
+        <img src="assets/agentes_fotos/pedro.png" alt="Pedro Jose Cuellar" class="agent-photo">
+        <h2>Pedro Jose Cuellar</h2>
+        <p><i class="fas fa-envelope"></i> ✉️example&#64;example.com</p>
+        <p><i class="fas fa-phone"></i> 📞 999 999 999</p>
+      </section>
+
+      <!-- Modal -->
+      <div class="modal" [ngClass]="{'show': isModalOpen}">
+        <div class="modal-content">
+          <span class="close" (click)="closeModal()">&times;</span>
+          <h2>Eliminar Agente</h2>
+          <p>¿Estás seguro que deseas eliminar este agente inmobiliario?</p>
+          <div class="button-container">
+            <button (click)="eliminarSi()">
+              <span>Sí</span>
+            </button>
+            <button (click)="eliminarNo()">
+              <span>No</span>
+            </button>
+          </div>
         </div>
       </div>
+
+      <!-- Botones de opciones -->
+      <div class="opciones">
+        <button class="btnModificar">Modificar</button>
+        <button class="btnEliminar" (click)="openModal()">Eliminar</button>
+      </div>
+
     </div>
   </div>
+</div>
