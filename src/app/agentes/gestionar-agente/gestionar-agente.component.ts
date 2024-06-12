@@ -34,4 +34,7 @@ export class GestionarAgenteComponent {
   eliminarNo() {
     this.closeModal();
   }
+  modificarAgente() {
+    this.router.navigate(['/modificarAgente']);
+  }
 }

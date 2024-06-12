@@ -1,50 +1,48 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Editar Agentes</title>
-</head>
-
-<h1>Editar Agentes</h1>
-
-
-<body>
 <div class="container">
-  <h2>Edite la Información Existente 📙</h2>
-  <form action="/submit-your-form-handler" method="POST">
-    <div class="form-group">
-      <label for="nombres">Nombres</label>
-      <input type="text" id="nombres" name="nombres">
+  <h1>Modificar Agente</h1>
+  <form class="add-agent-form">
+    <div class="form-left">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" [value]="agente.nombre" placeholder="Nombre">
+      </div>
+      <div class="form-group">
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" [value]="agente.apellidos" placeholder="Apellidos">
+      </div>
+      <div class="form-group">
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" [value]="agente.dni" placeholder="12345678">
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" [value]="agente.telefono" placeholder="999 999 999">
+      </div>
+      <div class="form-group">
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" [value]="agente.correo" placeholder="example@example.com">
+      </div>
+      <div class="form-group">
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" [value]="agente.contrasena" placeholder="********">
+      </div>
+      <div class="form-group">
+        <label for="confirmar-contrasena">Confirmar Contraseña:</label>
+        <input type="password" id="confirmar-contrasena" name="confirmar-contrasena" [value]="agente.confirmarContrasena" placeholder="********">
+      </div>
     </div>
-    <div class="form-group">
-      <label for="apellidos">Apellidos</label>
-      <input type="text" id="apellidos" name="apellidos">
-    </div>
-    <div class="form-group">
-      <label for="dni">DNI</label>
-      <input type="text" id="dni" name="dni">
-    </div>
-    <div class="form-group">
-      <label for="correo">Correo Electrónico</label>
-      <input type="email" id="correo" name="correo">
-    </div>
-    <div class="form-group">
-      <label for="contrasena">Contraseña</label>
-      <input type="password" id="contrasena" name="contrasena">
-    </div>
-    <div class="form-group">
-      <label for="contacto">Número de Contacto</label>
-      <input type="text" id="contacto" name="contacto">
-    </div>
-    <div class="form-group">
-      <label for="foto">Agregar Foto</label>
-      <input type="file" id="foto" name="foto">
 
+    <div class="photo-uploader">
+      <div class="photo-container" (click)="triggerFileInput()">
+        <div class="photo-placeholder">
+          <img [src]="selectedImage || 'assets/img/icons/subida_de_imagen.png'" alt="Agregar Foto">
+        </div>
+      </div>
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" hidden>
+      <div class="actions">
+        <button type="button" class="cancel-button" (click)="onCancel()">Cancelar</button>
+        <button type="button" class="add-button" (click)="onAgregar()">Agregar</button>
+      </div>
     </div>
-    <button type="submit">Guardar</button>
   </form>
 </div>
-</body>
-
-</html>
