@@ -1,5 +1,5 @@
 <h1>Agregar Casa</h1>
-<form action="">
+<form (ngSubmit)="onSubmit()" [formGroup]="propertyForm">
   <h2>Especificaciones</h2>
   <div class="especificaciones">
     <div class="Descripcion">
@@ -16,7 +16,7 @@
           <label for="AreaTerreno">Àrea de terreno *:</label>
           <label for="banos">Cant. de Baños:*</label>
           <label for="dormitorios">Cant. de Dormitorios:*</label>
-          <label for="cochera">Cochera*:</label>
+          <label for="cochera">Cochera:</label>
           <label for="cantCocheras">Cant. de Cochera:</label>
         </div>
         <div class="medidas">
@@ -123,11 +123,11 @@
             <input type="text" name="nombre" id="nombre" formControlName="nombre">
           </div>
           <div class="formCampNum">
-            <label for="manzana">Manzana</label>
+            <label for="manzana">Manzana*:</label>
             <input type="text" name="manzana" id="manzana" placeholder="numero o letra" formControlName="manzana">
           </div>
           <div class="formCampNum">
-            <label for="lote">Lote</label>
+            <label for="lote">Lote*:</label>
             <input type="number" name="lote" id="lote" placeholder="99" formControlName="lote">
           </div>
           <div class="formCampNum">

@@ -44,4 +44,8 @@ export class AuthService {
     }
     return 'Invitado';
   }
+
+  Role(): string {
+    return localStorage.getItem('role') || 'Invitado';
+  }
 }

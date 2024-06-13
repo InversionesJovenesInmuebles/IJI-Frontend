@@ -1,49 +1,47 @@
 import { Component } from '@angular/core';
+import {Router, RouterLink} from "@angular/router";
+import {RegisterAgenteRequest} from "../../interfaces/register-agente-request";
+import {InmobiliariaService} from "../../services/inmobiliaria.service";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-gestionar-agente',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink,
+    FormsModule
+  ],
   templateUrl: './agregar-agente.component.html',
   styleUrls: ['./agregar-agente.component.css']
 })
+
 export class AgregarAgenteComponent {
-  selectedImage: string | ArrayBuffer | null = null;
+  agent: RegisterAgenteRequest = {
+    nombre: '',
+    apellido: '',
+    correo: '',
+    contrasena: '',
+    nombreInmobiliaria: '',
+    telefono: '',
+    dni: ''
+  };
 
-  onAgregar() {
-    // logica backend?
-  }
+  constructor(
+    private inmobiliariaService: InmobiliariaService,
+    private router: Router
+  ) {}
 
-  onCancel() {
-    this.selectedImage = null;
-  }
-
-  triggerFileInput() {
-    console.log('triggerFileInput called'); // Debug
-    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
-    fileInput.click();
-  }
-
-  onFileSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-      if (!file.type.startsWith('image/')) {
-        console.error('Selected file is not an image');
-        return;
+  onSubmit() {
+    const token = localStorage.getItem('token');
+    this.inmobiliariaService.registrarAgente(this.agent, token).subscribe(
+      response => {
+        console.log('Agente registrado exitosamente', response);
+        this.router.navigate(['/gestionarAgente']);
+      },
+      error => {
+        console.error('Error al registrar agente', error);
       }
-      const reader = new FileReader();
-      reader.onload = (e: ProgressEvent<FileReader>) => {
-        if (e.target?.result) {
-          this.selectedImage = e.target.result;
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
-  onAdd() {
-    console.log('Agregar');
-    // Lógica para agregar la foto
+    );
   }
 }
+
