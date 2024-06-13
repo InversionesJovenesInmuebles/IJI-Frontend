@@ -3,16 +3,15 @@
     <h1>Gestionar Agentes Inmobiliarios</h1>
     <a href="/agregarAgente" routerLink="/agregarAgente" class="add-agent-button">
       <span>Agregar Agente 👨🏻‍💼</span>
-      <i class="fas fa-user-plus"></i>
     </a>
   </div>
   <div class="agents-grid">
-    <div class="agent-card">
+    <div class="agent-card" *ngFor="let agente of agentes">
       <section>
         <img src="assets/agentes_fotos/pedro.png" alt="Pedro Jose Cuellar" class="agent-photo">
-        <h2>Pedro Jose Cuellar</h2>
-        <p><i class="fas fa-envelope"></i> ✉️example&#64;example.com</p>
-        <p><i class="fas fa-phone"></i> 📞 999 999 999</p>
+        <h2>{{agente.nombre}} {{agente.apellido}}</h2>
+        <p>✉️ {{agente.username}}</p>
+        <p>📞 {{agente.telefono}}</p>
       </section>
 
       <!-- Modal -->
@@ -32,12 +31,12 @@
         </div>
       </div>
 
+
       <!-- Botones de opciones -->
       <div class="opciones">
-        <button class="btnModificar" (click)="modificarAgente()">Modificar</button>
-        <button class="btnEliminar" (click)="openModal()">Eliminar</button>
+        <button class="btnModificar" (click)="modificarAgente(agente.id)">Modificar</button>
+        <button class="btnEliminar" (click)="openModal(agente)">Eliminar</button>
       </div>
-
     </div>
   </div>
 </div>

@@ -11,7 +11,11 @@ export class InmobiliariaService {
 
   private baseUrl: string = 'http://localhost:8080/inmobiliaria';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
+
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 
   // Agregar agente
@@ -23,21 +27,26 @@ export class InmobiliariaService {
 
   // Listar agentes por inmobiliaria
   listarAgentesInmobiliaria(nombreInmobiliaria: string): Observable<Agente[]> {
-    return this.http.get<Agente[]>(`${this.baseUrl}/listarAgentes/Remax`);
+    const headers = this.getHeaders();
+    return this.http.get<Agente[]>(`${this.baseUrl}/listarAgentes/${nombreInmobiliaria}`, { headers });
   }
 
   // Modificar agente
   modificarAgente(id: number, request: RegisterAgenteRequest): Observable<Agente> {
-    return this.http.put<Agente>(`${this.baseUrl}/modificarAgente/${id}`, request);
+    const headers = this.getHeaders();
+    return this.http.put<Agente>(`${this.baseUrl}/modificarAgente/${id}`, request, { headers });
   }
 
   // Eliminar agente
   eliminarAgente(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}/eliminar/${id}`);
+    const headers = this.getHeaders();
+    return this.http.delete<any>(`${this.baseUrl}/eliminar/${id}`, { headers });
   }
 
   // Listar a todos los agentes
   listarAgentes(): Observable<Agente[]> {
-    return this.http.get<Agente[]>(`${this.baseUrl}/listarAgentes`);
+    const headers = this.getHeaders();
+    return this.http.get<Agente[]>(`${this.baseUrl}/listarAgentes`, { headers });
   }
 }
+
