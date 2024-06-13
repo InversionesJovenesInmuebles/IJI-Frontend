@@ -25,7 +25,7 @@ export const routes: Routes = [
 
   { path: 'agregarAgente', title: 'Agregar Agente', component: AgregarAgenteComponent, canActivate: [authGuard], data: { expectedRoles: ['Inmobiliaria'] }},
 
-  { path: 'modificarAgente', title: 'Modificar Agente', component: ModificarAgenteComponent, canActivate: [authGuard], data: { expectedRoles: ['Inmobiliaria'] }},
+  { path: `modificarAgente/:id`, title: 'Modificar Agente', component: ModificarAgenteComponent, canActivate: [authGuard], data: { expectedRoles: ['Inmobiliaria'] }},
 
   { path: 'gestionarAgente', title: 'Gestionar Agente', component: GestionarAgenteComponent, canActivate: [authGuard], data: { expectedRoles: ['Inmobiliaria'] }},
 
