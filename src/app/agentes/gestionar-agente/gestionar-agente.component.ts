@@ -32,7 +32,7 @@ export class GestionarAgenteComponent implements OnInit {
       (agentes) => {
         this.agentes = agentes;
         console.error(agentes)
-        },
+      },
       (error) => {
         console.error('Error al listar agentes:', error);
       }
@@ -49,7 +49,20 @@ export class GestionarAgenteComponent implements OnInit {
     this.agenteAEliminar = null;
   }
 
-
+  eliminarSi(): void {
+    if (this.agenteAEliminar) {
+      this.inmobiliariaService.eliminarAgente(this.agenteAEliminar.id).subscribe(
+        () => {
+          console.log('Agente inmobiliario eliminado');
+          this.listarAgentes(); // Actualiza la lista de agentes
+          this.closeModal();
+        },
+        (error) => {
+          console.error('Error al eliminar agente:', error);
+        }
+      );
+    }
+  }
 
   eliminarNo(): void {
     this.closeModal();
@@ -59,4 +72,3 @@ export class GestionarAgenteComponent implements OnInit {
     this.router.navigate(['/modificarAgente', id]);
   }
 }
-
