@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import {NgForOf} from "@angular/common";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { NgForOf } from "@angular/common";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-agregar-casa',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    ReactiveFormsModule
   ],
   templateUrl: './agregar-casa.component.html',
-  styleUrl: './agregar-casa.component.css'
+  styleUrls: ['./agregar-casa.component.css']
 })
 export class AgregarCasaComponent {
   propertyForm: FormGroup;
@@ -20,11 +21,11 @@ export class AgregarCasaComponent {
       areaTerreno: ['', Validators.required],
       banos: ['', Validators.required],
       dormitorios: ['', Validators.required],
-      cochera: [false, Validators.required],
+      cochera: [false],
       cantCocheras: [''],
       otrasComodidades: [''],
       tipoPropiedad: ['casa', Validators.required],
-      cantPisos: [''],
+      cantPisos: ['', Validators.required],
       jardin: [false],
       areaJardin: [''],
       atico: [false],
@@ -40,8 +41,8 @@ export class AgregarCasaComponent {
       distrito: ['', Validators.required],
       tipo: ['', Validators.required],
       nombre: ['', Validators.required],
-      manzana: [''],
-      lote: [''],
+      manzana: ['', Validators.required],
+      lote: ['', Validators.required],
       interior: [''],
       referencia: ['', Validators.required],
       latitud: [''],
@@ -51,6 +52,7 @@ export class AgregarCasaComponent {
       images: [this.images, Validators.required]
     });
   }
+
   onFileSelected(event: any) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
@@ -69,5 +71,32 @@ export class AgregarCasaComponent {
   removeImage(index: number) {
     this.images.splice(index, 1);
     this.propertyForm.controls['images'].setValue(this.images);
+  }
+
+  createDireccion() {
+    const tipo = this.propertyForm.get('tipo')?.value;
+    const nombre = this.propertyForm.get('nombre')?.value;
+    const manzana = this.propertyForm.get('manzana')?.value;
+    const lote = this.propertyForm.get('lote')?.value;
+    const interior = this.propertyForm.get('interior')?.value;
+    const referencia = this.propertyForm.get('referencia')?.value;
+
+    let direccion = `${tipo} ${nombre} Mz. ${manzana} Lote ${lote}`;
+    if (interior) {
+      direccion += ` Int. ${interior}. ${referencia}.`;
+    }
+    direccion += `. ${referencia}.`;
+
+    return direccion;
+  }
+
+  onSubmit() {
+    if (this.propertyForm.valid) {
+      const direccion = this.createDireccion();
+      console.log('Dirección:', direccion);
+      // Aquí podrías realizar la lógica para enviar el formulario junto con la dirección generada
+    } else {
+      alert('Por favor completa todos los campos requeridos.');
+    }
   }
 }

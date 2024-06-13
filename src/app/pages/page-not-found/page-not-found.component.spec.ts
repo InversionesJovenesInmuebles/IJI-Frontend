@@ -1,18 +1,18 @@
 // import { ComponentFixture, TestBed } from '@angular/core/testing';
 //
-// import { IniciarSesionAgenteComponent } from './iniciar-sesion-agente.component';
+// import { PageNotFoundComponent } from './page-not-found.component';
 //
-// describe('IniciarSesionAgenteComponent', () => {
-//   let component: IniciarSesionAgenteComponent;
-//   let fixture: ComponentFixture<IniciarSesionAgenteComponent>;
+// describe('PageNotFoundComponent', () => {
+//   let component: PageNotFoundComponent;
+//   let fixture: ComponentFixture<PageNotFoundComponent>;
 //
 //   beforeEach(async () => {
 //     await TestBed.configureTestingModule({
-//       imports: [IniciarSesionAgenteComponent]
+//       imports: [PageNotFoundComponent]
 //     })
 //     .compileComponents();
 //
-//     fixture = TestBed.createComponent(IniciarSesionAgenteComponent);
+//     fixture = TestBed.createComponent(PageNotFoundComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

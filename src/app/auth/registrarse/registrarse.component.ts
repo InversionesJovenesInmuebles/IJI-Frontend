@@ -38,7 +38,7 @@ export class RegistrarseComponent implements OnInit {
       this.authService.registerCliente(this.registerForm.value).subscribe({
         next: (response) => {
           console.log('Registro exitoso', response);
-          this.router.navigate(['/propiedades']);
+          this.router.navigate(['/iniciarSesion']);
         },
         error: (err) => {
           console.error('Error en el registro', err);
