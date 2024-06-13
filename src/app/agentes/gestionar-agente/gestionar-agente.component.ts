@@ -1,40 +1,62 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router, RouterLink } from "@angular/router";
-import { NgClass } from "@angular/common";
+import {LowerCasePipe, NgClass, NgForOf} from "@angular/common";
+import {Agente} from "../../interfaces/agente";
+import {InmobiliariaService} from "../../services/inmobiliaria.service";
 
 @Component({
   selector: 'app-gestionar-agente',
   standalone: true,
   imports: [
     RouterLink,
-    NgClass
+    NgClass,
+    LowerCasePipe,
+    NgForOf
   ],
   templateUrl: './gestionar-agente.component.html',
   styleUrls: ['./gestionar-agente.component.css']
 })
-export class GestionarAgenteComponent {
+export class GestionarAgenteComponent implements OnInit {
   isModalOpen = false;
+  agentes: Agente[] = [];
+  agenteAEliminar: Agente | null = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private inmobiliariaService: InmobiliariaService) {}
 
-  openModal() {
+  ngOnInit(): void {
+    this.listarAgentes();
+  }
+
+  listarAgentes(): void {
+    this.inmobiliariaService.listarAgentesInmobiliaria('Remax').subscribe(
+      (agentes) => {
+        this.agentes = agentes;
+        console.error(agentes)
+        },
+      (error) => {
+        console.error('Error al listar agentes:', error);
+      }
+    );
+  }
+
+  openModal(agente: Agente): void {
     this.isModalOpen = true;
+    this.agenteAEliminar = agente;
   }
 
-  closeModal() {
+  closeModal(): void {
     this.isModalOpen = false;
+    this.agenteAEliminar = null;
   }
 
-  eliminarSi() {
-    // Lógica para eliminar el agente inmobiliario
-    console.log('Agente inmobiliario eliminado');
+
+
+  eliminarNo(): void {
     this.closeModal();
   }
 
-  eliminarNo() {
-    this.closeModal();
-  }
-  modificarAgente() {
-    this.router.navigate(['/modificarAgente']);
+  modificarAgente(id: number): void {
+    this.router.navigate(['/modificarAgente', id]);
   }
 }
+
