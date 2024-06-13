@@ -31,6 +31,12 @@ export class InmobiliariaService {
     return this.http.get<Agente[]>(`${this.baseUrl}/listarAgentes/${nombreInmobiliaria}`, { headers });
   }
 
+  // Obtener agente por ID
+  getAgenteById(id: number): Observable<Agente> {
+    const headers = this.getHeaders();
+    return this.http.get<Agente>(`${this.baseUrl}/obtenerAgente/${id}`, { headers });
+  }
+
   // Modificar agente
   modificarAgente(id: number, request: RegisterAgenteRequest): Observable<Agente> {
     const headers = this.getHeaders();
