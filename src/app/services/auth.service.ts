@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, tap} from 'rxjs';
-import {AuthResponse} from "../interfaces/auth-response";
-import {LoginRequest} from "../interfaces/login-request";
-import {RegisterClienteRequest} from "../interfaces/register-cliente-request";
+import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { AuthResponse } from "../interfaces/auth-response";
+import { LoginRequest } from "../interfaces/login-request";
+import { RegisterClienteRequest } from "../interfaces/register-cliente-request";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,10 @@ export class AuthService {
   login(request: LoginRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.baseUrl}/login`, request).pipe(
       tap((response: AuthResponse) => {
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('role', response.role);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('role', response.role);
+        }
         this.roleSubject.next(response.role);
       })
     );
@@ -29,8 +31,10 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('token');
+      localStorage.removeItem('role');
+    }
     this.roleSubject.next('Invitado');
   }
 
@@ -46,6 +50,9 @@ export class AuthService {
   }
 
   Role(): string {
-    return localStorage.getItem('role') || 'Invitado';
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('role') || 'Invitado';
+    }
+    return 'Invitado';
   }
 }

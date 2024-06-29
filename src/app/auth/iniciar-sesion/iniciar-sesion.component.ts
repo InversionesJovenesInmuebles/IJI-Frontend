@@ -30,6 +30,7 @@ export class IniciarSesionComponent {
         console.log('Login successful', response);
         localStorage.setItem('token', response.token);
         localStorage.setItem('role', response.role);
+
         let navigateUrl = '/propiedades';
         if (response.role === 'Agente') {
           navigateUrl = '/gestionarPropiedades';
@@ -45,5 +46,5 @@ export class IniciarSesionComponent {
       }
     });
   }
-
 }
+

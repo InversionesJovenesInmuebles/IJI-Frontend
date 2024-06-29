@@ -28,7 +28,7 @@ export class GestionarAgenteComponent implements OnInit {
   }
 
   listarAgentes(): void {
-    this.inmobiliariaService.listarAgentesInmobiliaria('Remax').subscribe(
+    this.inmobiliariaService.listarAgentesInmobiliaria('REMAX').subscribe(
       (agentes) => {
         this.agentes = agentes;
         console.error(agentes)
