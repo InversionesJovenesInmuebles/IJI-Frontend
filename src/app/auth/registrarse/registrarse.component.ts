@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, RouterLink} from "@angular/router";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-registrarse',
@@ -11,7 +11,7 @@ import {AuthService} from "../../services/auth.service";
     ReactiveFormsModule
   ],
   templateUrl: './registrarse.component.html',
-  styleUrl: './registrarse.component.css'
+  styleUrls: ['./registrarse.component.css']
 })
 export class RegistrarseComponent implements OnInit {
   registerForm: FormGroup;
@@ -47,4 +47,3 @@ export class RegistrarseComponent implements OnInit {
     }
   }
 }
-
