@@ -5,6 +5,7 @@ import {Casa} from "../interfaces/casa";
 import {Departamento} from "../interfaces/departamento";
 import {AuthService} from "./auth.service";
 import {Agente} from "../interfaces/agente";
+import {CasaModificar} from "../interfaces/casa-modificar";
 
 @Injectable({
   providedIn: 'root'
@@ -33,15 +34,9 @@ export class AgenteService {
     });
   }
 
-  modificarCasa(id: number, casa: Casa): Observable<string> {
-    const formData = this.createCasaFormData(casa);
-    return this.http.put<string>(
-      `${this.baseUrl}/modificarCasa/${id}`,
-      formData,
-      {
-        headers: this.getHeaders(),
-      }
-    );
+  modificarCasa(id: number, casaData: FormData, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<any>(`${this.baseUrl}/modificarCasa/${id}`, casaData, { headers });
   }
 
   eliminarCasa(id: number): Observable<string> {
@@ -56,18 +51,9 @@ export class AgenteService {
     });
   }
 
-  modificarDepartamento(
-    id: number,
-    departamento: Departamento
-  ): Observable<string> {
-    const formData = this.createDepartamentoFormData(departamento);
-    return this.http.put<string>(
-      `${this.baseUrl}/modificarDepartamento/${id}`,
-      formData,
-      {
-        headers: this.getHeaders(),
-      }
-    );
+  modificarDepartamento(id: number, departamentoData: FormData, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<any>(`${this.baseUrl}/modificarDepartamento/${id}`, departamentoData, { headers });
   }
 
   eliminarDepartamento(id: number): Observable<string> {

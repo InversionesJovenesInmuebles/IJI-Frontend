@@ -10,12 +10,13 @@ import {PerfilAgenteComponent} from "./agentes/perfil-agente/perfil-agente.compo
 import {GestionarPropiedadesComponent} from "./propiedades/gestionar-propiedades/gestionar-propiedades.component";
 import {AgregarCasaComponent} from "./propiedades/agregar-casa/agregar-casa.component";
 import {AgregarDepartamentoComponent} from "./propiedades/agregar-departamento/agregar-departamento.component";
-import {ModificarPropiedadComponent} from "./propiedades/modificar-propiedad/modificar-propiedad.component";
 import {PropiedadesComponent} from "./pages/propiedades/propiedades.component";
 import {AgregarAgenteComponent} from "./agentes/agregar-agente/agregar-agente.component";
 import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.component";
 import {VerPropiedadCasaComponent} from "./pages/ver-propiedad-casa/ver-propiedad-casa.component";
 import {VerPropiedadDepaComponent} from "./pages/ver-propiedad-depa/ver-propiedad-depa.component";
+import {ModificarCasaComponent} from "./propiedades/modificar-casa/modificar-casa.component";
+import {ModificarDepartamentoComponent} from "./propiedades/modificar-departamento/modificar-departamento.component";
 
 export const routes: Routes = [
   { path: 'index', title: 'Index', component: IndexComponent },
@@ -38,7 +39,9 @@ export const routes: Routes = [
 
   { path: 'agregarDepartamento', title: 'Agregar Departamento', component: AgregarDepartamentoComponent, canActivate: [authGuard], data: { expectedRoles: ['Agente'] }},
 
-  { path: 'modificarPropiedad', title: 'Modificar Propiedad', component: ModificarPropiedadComponent, canActivate: [authGuard], data: { expectedRoles: ['Agente'] }},
+  { path: 'modificarCasa/:id', title: 'Modificar Casa', component: ModificarCasaComponent, canActivate: [authGuard], data: { expectedRoles: ['Agente'] }},
+
+  { path: 'modificarDepartamento/:id', title: 'Modificar Departamento', component: ModificarDepartamentoComponent, canActivate: [authGuard], data: { expectedRoles: ['Agente'] }},
 
   { path: 'propiedades', title: 'Propiedades', component: PropiedadesComponent},
 

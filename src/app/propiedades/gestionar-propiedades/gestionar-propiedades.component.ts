@@ -94,5 +94,18 @@ export class GestionarPropiedadesComponent implements OnInit {
     this.closeModal();
     this.router.navigate(['/agregarDepartamento']);
   }
+
+  modificarPropiedad(idPropiedad: number): void {
+    const propiedad = this.propiedades.find(p => p.idPropiedad === idPropiedad);
+    if (propiedad) {
+      console.log('ID de la propiedad:', idPropiedad);
+      const tipoPropiedad = propiedad.tipoPropiedad.toLowerCase();
+      if (tipoPropiedad === 'casa') {
+        this.router.navigate(['/modificarCasa', idPropiedad]);
+      } else if (tipoPropiedad === 'departamento') {
+        this.router.navigate(['/modificarDepartamento', idPropiedad]);
+      }
+    }
+  }
 }
 

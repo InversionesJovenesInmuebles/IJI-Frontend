@@ -1,1 +1,161 @@
-<p>modificar-departamento works!</p>
+<h1>Modificar Departamento</h1>
+<form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+  <h2>Especificaciones</h2>
+  <div class="especificaciones">
+    <div class="Descripcion">
+      <label for="descripcion">Descripcion:*</label>
+      <textarea name="descripcion" id="descripcion" formControlName="descripcion" cols="45" rows="10"></textarea>
+    </div>
+    <div class="EspecificacionesGeneralesComp">
+      <div class="EspecificacionesPrincipales">
+        <div class="nomMedidas">
+          <label for="AreaTerreno">Àrea de terreno *:</label>
+          <label for="banos">Cant. de Baños:*</label>
+          <label for="dormitorios">Cant. de Dormitorios:*</label>
+          <label for="cochera">Cochera:</label>
+          <label for="cantCocheras">Cant. de Cochera:</label>
+        </div>
+        <div class="medidas">
+          <div class="med">
+            <input type="number" name="areaTerreno" id="AreaTerreno" formControlName="areaTerreno" placeholder="999">
+            <p>m<sup>2</sup></p>
+          </div>
+          <div class="med">
+            <input type="number" name="banos" id="banos" placeholder="2" formControlName="cantBanos">
+            <img src="assets/img/icons/bano.png" alt="" height="26">
+          </div>
+          <div class="med">
+            <input type="number" name="dormitorios" id="dormitorios" placeholder="2" formControlName="cantDormitorios">
+            <img src="assets/img/icons/habitacion.png" alt="" height="26">
+          </div>
+          <div class="med">
+            <input type="checkbox" name="cochera" id="cochera" formControlName="cochera">
+          </div>
+          <div class="med">
+            <input type="number" name="cantCocheras" id="cantCocheras" placeholder="1" formControlName="cantCochera">
+            <img src="assets/img/icons/Cochera.png" alt="" height="26">
+          </div>
+        </div>
+      </div>
+      <label for="otrasComodidades">Otras comodidades</label>
+      <textarea name="otrasComodidades" id="otrasComodidades" cols="34" rows="2"
+                formControlName="otrasComodidades"></textarea>
+    </div>
+
+    <div class="EspecificacionesDependientes">
+      <div class="tipoPropiedadBox">
+        <label for="tipoPropiedad">Tipo de Propiedad*:</label>
+        <input type="text" id="tipoPropiedad" formControlName="tipoPropiedad" value="Departamento">
+      </div>
+      <div class="EspecificacionesDepartamento" >
+        <div class="parte">
+          <div class="nomMedidas">
+            <label for="pisos">Piso*:</label>
+            <label for="interior">Interior:*</label>
+            <label for="ascensor">Ascensor:</label>
+            <label for="areasComunes">Áreas Comunes:</label>
+          </div>
+          <div class="medidas">
+            <div class="med">
+              <input type="number" name="pisos" id="pisos" formControlName="pisos">
+              <img src="assets/img/icons/pisos.png" alt="" height="26">
+
+            </div>
+            <div class="med">
+              <input type="number" name="interior" id="interior" formControlName="interior">
+              <img src="assets/img/icons/hastag.png" alt="" height="26">
+
+            </div>
+            <div class="med">
+              <input type="checkbox" name="ascensor" id="ascensor" formControlName="ascensor">
+            </div>
+            <div class="med">
+              <input type="checkbox" name="areasComunes" id="areasComunes" formControlName="areasComunes">
+            </div>
+          </div>
+        </div>
+        <label for="areasComunesEspecificas">Areas comunes</label>
+        <textarea name="areasComunesEspecificas" id="areasComunesEspecificas" cols="31" rows="2"
+                  formControlName="areasComunesEspecificas" ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="direcosto">
+    <div class="direccion">
+      <h2>Dirección</h2>
+      <div class="direccionForm">
+        <div class="direccionpt1">
+          <div class="formCamp">
+            <label for="pais">País:*</label>
+            <input id="pais" formControlName="pais">
+          </div>
+          <div class="formCamp">
+            <label for="region">Región:*</label>
+            <input id="region" formControlName="region">
+          </div>
+          <div class="formCamp">
+            <label for="provincia">Provincia:*</label>
+            <input id="provincia" formControlName="provincia">
+          </div>
+          <div class="formCamp">
+            <label for="distrito">Distrito:*</label>
+            <input id="distrito" formControlName="distrito">
+          </div>
+        </div>
+        <div class="direccionpt2">
+          <div class="formCampNombre">
+            <label for="direccion">Direccion:*</label>
+            <input type="text" id="direccion" formControlName="direccion">
+          </div>
+          <div class="formCampCoordenadas">
+            <label for="latitud">Latitud</label>
+            <input type="number" id="latitud" placeholder="1.1111" formControlName="latitud">
+          </div>
+          <div class="formCampCoordenadas">
+            <label for="longitud">Longitud</label>
+            <input type="number" id="longitud" placeholder="1.1111" formControlName="longitud">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Costos -->
+    <div class="costos">
+      <h2>Costos</h2>
+      <div class="formCampContainer">
+        <div class="formCampCosto">
+          <label for="costoTotal">Costo Total:*</label>
+          <input id="costoTotal" formControlName="costoTotal" type="number">
+        </div>
+        <div class="formCampCosto">
+          <label for="costoInicial">Costo Inicial:*</label>
+          <input id="costoInicial" formControlName="costoInicial" type="number">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Imágenes -->
+  <div class="imagenes">
+    <h2>Imagenes</h2>
+    <div class="galeria">
+      <div class="upload-container">
+        <div class="upload-box" (click)="fileInput.click()">
+          <input #fileInput type="file" (change)="onFileSelected($event)" hidden accept="image/*" multiple>
+          <img src="assets/img/icons/agregarImagen.png">
+          <p>Agregar Imagen</p>
+        </div>
+        <div class="images-preview">
+          <div *ngFor="let foto of fotos; let i = index" class="image-container">
+            <img [src]="foto" alt="Imagen subida">
+            <button type="button" class="remove-image" (click)="removeImage(i)">X</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="botones">
+    <button type="button" class="CancelarBTN" (click)="router.navigate(['/gestionarPropiedades'])">Cancelar</button>
+    <button type="submit" class="EnviarBTN" >Enviar</button>
+  </div>
+</form>
