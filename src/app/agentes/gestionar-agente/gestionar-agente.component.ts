@@ -3,6 +3,7 @@ import { Router, RouterLink } from "@angular/router";
 import {LowerCasePipe, NgClass, NgForOf} from "@angular/common";
 import {Agente} from "../../interfaces/agente";
 import {InmobiliariaService} from "../../services/inmobiliaria.service";
+import {Inmobiliaria} from "../../interfaces/inmobiliaria";
 
 @Component({
   selector: 'app-gestionar-agente',
@@ -24,14 +25,26 @@ export class GestionarAgenteComponent implements OnInit {
   constructor(private router: Router, private inmobiliariaService: InmobiliariaService) {}
 
   ngOnInit(): void {
-    this.listarAgentes();
+    this.obtenerNombreInmobiliaria();
   }
 
-  listarAgentes(): void {
-    this.inmobiliariaService.listarAgentesInmobiliaria('REMAX').subscribe(
+  obtenerNombreInmobiliaria(): void {
+    this.inmobiliariaService.obtenerInmobiliariaPorToken().subscribe(
+      (inmobiliaria: Inmobiliaria) => {
+        const nombreInmobiliaria = inmobiliaria.nombreInmobiliaria;
+        this.listarAgentes(nombreInmobiliaria);
+      },
+      (error) => {
+        console.error('Error al obtener datos de la inmobiliaria:', error);
+      }
+    );
+  }
+
+  listarAgentes(nombreInmobiliaria: string): void {
+    this.inmobiliariaService.listarAgentesInmobiliaria(nombreInmobiliaria).subscribe(
       (agentes) => {
         this.agentes = agentes;
-        console.error(agentes)
+        console.log(agentes);
       },
       (error) => {
         console.error('Error al listar agentes:', error);
@@ -51,10 +64,10 @@ export class GestionarAgenteComponent implements OnInit {
 
   eliminarSi(): void {
     if (this.agenteAEliminar) {
-      this.inmobiliariaService.eliminarAgente(this.agenteAEliminar.id).subscribe(
+      this.inmobiliariaService.eliminarAgente(this.agenteAEliminar.idAgente).subscribe(
         () => {
           console.log('Agente inmobiliario eliminado');
-          this.listarAgentes(); // Actualiza la lista de agentes
+          this.obtenerNombreInmobiliaria(); // Actualiza la lista de agentes
           this.closeModal();
         },
         (error) => {
@@ -68,7 +81,9 @@ export class GestionarAgenteComponent implements OnInit {
     this.closeModal();
   }
 
-  modificarAgente(id: number): void {
-    this.router.navigate(['/modificarAgente', id]);
+  modificarAgente(idAgente: number): void {
+    console.log('ID del agente:', idAgente);
+    this.router.navigate(['/modificarAgente', idAgente]);
   }
 }
+

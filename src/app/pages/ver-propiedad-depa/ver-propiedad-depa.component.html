@@ -1,0 +1,122 @@
+<div class="contenedor">
+  <div class="imgCont">
+    <div class="imgPrincipal">
+      <img *ngIf="fotos.length > 0" [src]="fotos[0]" alt="Imagen principal">
+    </div>
+    <div class="imgSecundarias">
+      <img *ngFor="let foto of fotos.slice(1)" [src]="foto" alt="Imagen secundaria">
+    </div>
+  </div>
+  <div class="tipo">
+    <div class="tipoPropiedad">
+      <p>Departamento</p>
+    </div>
+    <div class="favoritos">
+      <img src="assets/img/icons/corazon.png" alt="favoritos">
+      <p>Añadir a Favoritos</p>
+    </div>
+  </div>
+  <div class="ubiCosto">
+    <div class="ubicacion">
+      <h2>Ubicación</h2>
+      <h5>{{ propiedad?.direccion }}</h5>
+      <p>{{ propiedad?.distrito }}, {{ propiedad?.provincia }}, {{ propiedad?.region }}</p>
+    </div>
+    <div class="costos">
+      <div class="costoTotal">
+        <h4>Costo Total:</h4>
+        <p>S/.{{ propiedad?.costoTotal }}</p>
+      </div>
+      <div class="costoInicial">
+        <h4>Costo Inicial:</h4>
+        <p>S/.{{ propiedad?.costoInicial }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="descripcion">
+    <h2>Descripcion</h2>
+    <p>{{ propiedad?.descripcion }}</p>
+  </div>
+
+  <!-- PARA DEPARTAMENTO -->
+  <div class="especificaciones">
+    <h2>Especificaciones</h2>
+    <div class="secciones">
+      <div class="col">
+        <div class="nombre">
+          <div class="nom">
+            <p>Área de Terreno:</p>
+          </div>
+          <div class="nom">
+            <p>Cantidad de Baños:</p>
+          </div>
+          <div class="nom">
+            <p>Cantidad de Dormitorios:</p>
+          </div>
+        </div>
+        <div class="medida">
+          <div class="submedi">
+            <p>{{ propiedad?.areaTerreno }} m<sup>2</sup></p>
+          </div>
+          <div class="submedi">
+            <p>{{ propiedad?.cantBanos }}</p><img src="assets/img/icons/bano.png" alt="Cantidad de Baños">
+          </div>
+          <div class="submedi">
+            <p>{{ propiedad?.cantDormitorios }}</p><img src="assets/img/icons/habitacion.png" alt="Cantidad de Habitaciones">
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="nombre">
+          <div class="nom">
+            <p>Cochera:</p>
+          </div>
+          <div class="nom">
+            <p>Cantidad de Cocheras:</p>
+          </div>
+          <div class="nom">
+            <p>Piso:</p>
+          </div>
+        </div>
+        <div class="medida">
+          <div class="submedi">
+            <p>{{ propiedad?.cochera ? 'Si' : 'No' }}</p>
+          </div>
+          <div class="submedi">
+            <p>{{ propiedad?.cantCochera }}</p><img src="assets/img/icons/Cochera.png" alt="Cantidad de Cocheras">
+          </div>
+          <div class="submedi">
+            <p>{{ propiedad?.pisos }}</p><img src="assets/img/icons/pisos.png" alt="Cantidad de Pisos">
+          </div>
+        </div>
+      </div>
+      <div class="col1">
+        <div class="subCol">
+          <div class="nombre">
+            <div class="nom">
+              <p>Ascensor:</p>
+            </div>
+            <div class="nom">
+              <p>Interior:</p>
+            </div>
+          </div>
+          <div class="medida">
+            <div class="submedi">
+              <p>{{ propiedad?.ascensor ? 'Si' : 'No' }}</p>
+            </div>
+            <div class="submedi">
+              <p>{{ propiedad?.interior }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="subCol1">
+          <p>Áreas Comunes: {{ propiedad?.areasComunesEspecificas }}</p>
+        </div>
+      </div>
+      <div class="col1">
+        <h3>Otras Comodidades</h3>
+        <p>{{ propiedad?.otrasComodidades }}</p>
+      </div>
+    </div>
+  </div>
+</div>
