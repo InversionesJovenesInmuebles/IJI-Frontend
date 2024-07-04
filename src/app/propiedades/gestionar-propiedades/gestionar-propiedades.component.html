@@ -3,43 +3,43 @@
   <button class="btnAgregar" (click)="openModal()">Agregar Propiedad</button>
 </div>
 <div class="container">
-  <div class="propiedadCard">
+  <div *ngFor="let propiedad of propiedades" class="propiedadCard">
     <div class="pt1">
-      <img src="assets/img/casa1.jpg" alt="Propiedad">
+      <img [src]="propiedad.fotos.length ? propiedad.fotos[0].nombreFoto : 'assets/img/default.jpg'" alt="Propiedad">
       <div class="seccion">
         <div class="tipoPropiedad">
-          <p>Casa/Departamento</p>
+          <p>{{ propiedad.tipoPropiedad }}</p>
         </div>
       </div>
       <div class="precios">
         <div class="precioInicial">
-          <p>Inicial: $999 999</p>
+          <p>Inicial: ${{ propiedad.costoInicial }}</p>
         </div>
         <div class="precioTotal">
-          <p>Total: $999 999</p>
+          <p>Total: ${{ propiedad.costoTotal }}</p>
         </div>
       </div>
       <div class="especificaciones">
         <div class="caracteristica">
           <img src="assets/img/icons/habitacion.png" alt="Habitaciones">
-          <p>4</p>
+          <p>{{ propiedad.cantDormitorios }}</p>
         </div>
         <div class="caracteristica">
           <img src="assets/img/icons/bano.png" alt="Baños">
-          <p>4</p>
+          <p>{{ propiedad.cantBanos }}</p>
         </div>
         <div class="caracteristica">
           <img src="assets/img/icons/area.png" alt="Area">
-          <p>100 m<sup>2</sup></p>
+          <p>{{ propiedad.areaTerreno }} m<sup>2</sup></p>
         </div>
       </div>
       <div class="direccion">
-        <p>Calle las cucardas 112, Victor Larco, Trujillo, Perú</p>
+        <p>{{ propiedad.direccion }}, {{ propiedad.distrito }}, {{ propiedad.provincia }}, {{ propiedad.region }}, {{ propiedad.pais }}</p>
       </div>
     </div>
     <div class="opciones">
-      <button class="btnModificar" >Modificar</button>
-      <button class="btnEliminar" >Eliminar</button>
+      <button class="btnModificar">Modificar</button>
+      <button class="btnEliminar" (click)="openDeleteModal(propiedad)">Eliminar</button>
     </div>
   </div>
 </div>
@@ -63,3 +63,15 @@
   </div>
 </div>
 
+<!-- Modal de Confirmación -->
+<div class="modal" [ngClass]="{'show': isDeleteModalOpen}">
+  <div class="modal-content">
+    <span class="close" (click)="closeDeleteModal()">&times;</span>
+    <h2>Eliminar Propiedad</h2>
+    <p>¿Estás seguro que deseas eliminar esta propiedad?</p>
+    <div class="button-container">
+      <button (click)="confirmDelete()">Sí</button>
+      <button (click)="closeDeleteModal()">No</button>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,10 @@
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px 50px ;
+  align-items: center;
+  justify-content: center;
+}
 .propiedadCard{
   height: auto;
   width: 350px;

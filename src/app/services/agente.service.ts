@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Casa} from "../interfaces/casa";
 import {Departamento} from "../interfaces/departamento";
 import {AuthService} from "./auth.service";
+import {Agente} from "../interfaces/agente";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,12 @@ export class AgenteService {
     const token = localStorage.getItem('token') || ''; // Obtener el token del localStorage
     return new HttpHeaders({
       Authorization: `Bearer ${token}`,
+    });
+  }
+
+  obtenerDatosAgente(): Observable<Agente> {
+    return this.http.get<Agente>(`${this.baseUrl}/listarAgenteToken`, {
+      headers: this.getHeaders(),
     });
   }
 
@@ -43,15 +50,10 @@ export class AgenteService {
     });
   }
 
-  agregarDepartamento(departamento: Departamento): Observable<string> {
-    const formData = this.createDepartamentoFormData(departamento);
-    return this.http.post<string>(
-      `${this.baseUrl}/agregarDepartamento`,
-      formData,
-      {
-        headers: this.getHeaders(),
-      }
-    );
+  agregarDepartamento(formData: FormData): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/agregarDepartamento`, formData, {
+      headers: this.getHeaders(),
+    });
   }
 
   modificarDepartamento(

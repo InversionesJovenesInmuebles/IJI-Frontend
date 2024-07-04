@@ -1,18 +1,18 @@
 // import { ComponentFixture, TestBed } from '@angular/core/testing';
 //
-// import { VerPropiedadComponent } from './ver-propiedad.component';
+// import { VerPropiedadCasaComponent } from './ver-propiedad-casa.component';
 //
-// describe('VerPropiedadComponent', () => {
-//   let component: VerPropiedadComponent;
-//   let fixture: ComponentFixture<VerPropiedadComponent>;
+// describe('VerPropiedadCasaComponent', () => {
+//   let component: VerPropiedadCasaComponent;
+//   let fixture: ComponentFixture<VerPropiedadCasaComponent>;
 //
 //   beforeEach(async () => {
 //     await TestBed.configureTestingModule({
-//       imports: [VerPropiedadComponent]
+//       imports: [VerPropiedadCasaComponent]
 //     })
 //     .compileComponents();
 //
-//     fixture = TestBed.createComponent(VerPropiedadComponent);
+//     fixture = TestBed.createComponent(VerPropiedadCasaComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

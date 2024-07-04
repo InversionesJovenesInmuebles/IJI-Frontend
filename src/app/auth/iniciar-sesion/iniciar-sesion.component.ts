@@ -19,24 +19,30 @@ import { NgIf } from '@angular/common'; // Importa la directiva NgIf de Angular
   styleUrl: './iniciar-sesion.component.css' // Ruta del archivo de estilos CSS del componente
 })
 export class IniciarSesionComponent {
-  loginRequest: LoginRequest = { correo: '', contrasena: '' }; // Inicializa la solicitud de inicio de sesión con campos vacíos
-  errorMessage: string = ''; // Inicializa el mensaje de error como una cadena vacía
+  loginRequest: LoginRequest = { correo: '', contrasena: '' };
+  errorMessage: string = '';
 
-  // Inyecta el servicio de autenticación y el enrutador en el constructor
   constructor(private authService: AuthService, private router: Router) { }
 
-  // Método que se llama al enviar el formulario de inicio de sesión
   onSubmit() {
     this.authService.login(this.loginRequest).subscribe({
-      // Si la autenticación es exitosa
       next: (response: AuthResponse) => {
-        console.log('Login successful', response); // Imprime un mensaje de éxito en la consola
-        localStorage.setItem('token', response.token); // Almacena el token en el almacenamiento local
-        localStorage.setItem('role', response.role); // Almacena el rol en el almacenamiento local
+        console.log('Login successful', response);
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('role', response.role);
+
+        let navigateUrl = '/propiedades';
+        if (response.role === 'Agente') {
+          navigateUrl = '/gestionarPropiedades';
+        } else if (response.role === 'Inmobiliaria') {
+          navigateUrl = '/gestionarAgente';
+        }
+        this.router.navigate([navigateUrl]).then(() => {
+          window.location.reload();
+        });
       },
-      // Si la autenticación falla
       error: (err) => {
-        this.errorMessage = 'Credenciales incorrectas. Por favor, intente de nuevo.'; // Establece el mensaje de error
+        this.errorMessage = 'Credenciales incorrectas. Por favor, intente de nuevo.';
       }
     });
   }

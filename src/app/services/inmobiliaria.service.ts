@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {RegisterAgenteRequest} from "../interfaces/register-agente-request";
 import {Observable} from "rxjs";
 import {Agente} from "../interfaces/agente";
+import {Inmobiliaria} from "../interfaces/inmobiliaria";
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,12 @@ export class InmobiliariaService {
   listarAgentesInmobiliaria(nombreInmobiliaria: string): Observable<Agente[]> {
     const headers = this.getHeaders();
     return this.http.get<Agente[]>(`${this.baseUrl}/listarAgentes/${nombreInmobiliaria}`, { headers });
+  }
+
+  //Obtener datos inmobiliaria por token
+  obtenerInmobiliariaPorToken(): Observable<Inmobiliaria> {
+    const headers = this.getHeaders();
+    return this.http.get<Inmobiliaria>(`${this.baseUrl}/listarInmobiliariaToken`, { headers });
   }
 
   // Obtener agente por ID

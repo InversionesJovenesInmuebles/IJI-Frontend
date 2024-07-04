@@ -12,9 +12,10 @@ import {AgregarCasaComponent} from "./propiedades/agregar-casa/agregar-casa.comp
 import {AgregarDepartamentoComponent} from "./propiedades/agregar-departamento/agregar-departamento.component";
 import {ModificarPropiedadComponent} from "./propiedades/modificar-propiedad/modificar-propiedad.component";
 import {PropiedadesComponent} from "./pages/propiedades/propiedades.component";
-import {VerPropiedadComponent} from "./pages/ver-propiedad/ver-propiedad.component";
 import {AgregarAgenteComponent} from "./agentes/agregar-agente/agregar-agente.component";
 import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.component";
+import {VerPropiedadCasaComponent} from "./pages/ver-propiedad-casa/ver-propiedad-casa.component";
+import {VerPropiedadDepaComponent} from "./pages/ver-propiedad-depa/ver-propiedad-depa.component";
 
 export const routes: Routes = [
   { path: 'index', title: 'Index', component: IndexComponent },
@@ -41,7 +42,9 @@ export const routes: Routes = [
 
   { path: 'propiedades', title: 'Propiedades', component: PropiedadesComponent},
 
-  { path: 'verPropiedad', title: 'Ver Propiedad', component: VerPropiedadComponent},
+  { path: 'verPropiedadC/:id', title: 'Ver Propiedad', component: VerPropiedadCasaComponent },
+
+  { path: 'verPropiedadD/:id', title: 'Ver Propiedad', component: VerPropiedadDepaComponent },
 
   { path: 'page-not-found', title: 'Página no encontrada', component: PageNotFoundComponent},
 
