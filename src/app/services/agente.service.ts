@@ -11,7 +11,7 @@ import {CasaModificar} from "../interfaces/casa-modificar";
   providedIn: 'root'
 })
 export class AgenteService {
-  private baseUrl = 'http://localhost:8080/agente';
+  private baseUrl = 'http://3.81.56.236:8080/agente';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 

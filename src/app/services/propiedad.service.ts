@@ -11,7 +11,7 @@ import {DepartamentoModificar} from "../interfaces/departamento-modificar";
   providedIn: 'root'
 })
 export class PropiedadService {
-  private baseUrl = 'http://localhost:8083/propiedad';
+  private baseUrl = 'http://3.81.56.236:8083/propiedad';
 
   constructor(private http: HttpClient, private agenteService: AgenteService) { }
 

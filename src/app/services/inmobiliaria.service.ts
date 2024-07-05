@@ -10,7 +10,7 @@ import {Inmobiliaria} from "../interfaces/inmobiliaria";
 })
 export class InmobiliariaService {
 
-  private baseUrl: string = 'http://localhost:8080/inmobiliaria';
+  private baseUrl: string = 'http://3.81.56.236:8080/inmobiliaria';
 
   constructor(private http: HttpClient) { }
 

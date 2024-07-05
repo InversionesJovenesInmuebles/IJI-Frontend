@@ -9,7 +9,7 @@ import { RegisterClienteRequest } from "../interfaces/register-cliente-request";
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl: string = 'http://localhost:8080/auth';
+  private baseUrl: string = 'http://3.81.56.236:8080/auth';
   private roleSubject: BehaviorSubject<string> = new BehaviorSubject<string>(this.getRoleFromLocalStorage());
 
   constructor(private http: HttpClient) { }
